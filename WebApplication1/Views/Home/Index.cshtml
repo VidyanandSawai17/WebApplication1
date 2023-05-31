@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication1.Models.stud>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="Index.css" rel="stylesheet" />
+</head>
+<body style="background-color:#F5FFFA;">
+@*<div class="container">
+    <div class="text-center">
+        <h3>Search Student</h3>
+        <form class="search-form">
+            <input class="form-control"
+                   type="search"
+                   placeholder="Enter ID" />
+            <button class="btn btn-primary"
+                    type="submit">
+                Search
+            </button>
+        </form>
+    </div>*@
+
+    <div class="student-table">
+        <h3>Students</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr style="background-color:#DDA0DD;">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
